@@ -29,6 +29,9 @@ jobs:
       - name: Configure Pages
         id: pages
         uses: actions/configure-pages@v5
+        with:
+          # Turn Pages on automatically on the first run (needs pages: write).
+          enablement: true
 
       - run: npm ci
 
