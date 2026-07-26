@@ -17,7 +17,7 @@ export default function AwardsPage() {
         eyebrow="Recognition"
         icon="Award"
         title="Awards & Honours"
-        subtitle="A lifetime of acclaim — from India’s highest civilian honours to the world’s great concert halls."
+        subtitle="A lifetime of acclaim, from India’s highest civilian honours to the world’s great concert halls."
       />
       <Section>
         <AwardsExplorer />

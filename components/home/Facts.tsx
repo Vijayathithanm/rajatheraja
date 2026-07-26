@@ -10,7 +10,7 @@ export function Facts() {
         eyebrow="Many Facets"
         icon="Sparkles"
         title="Interesting Facts"
-        subtitle="A composer, a lyricist, a photographer and a parliamentarian — the many dimensions of the maestro."
+        subtitle="A composer, a lyricist, a photographer and a parliamentarian, the many dimensions of the maestro."
       />
       <RevealGroup className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {facts.map((f) => (

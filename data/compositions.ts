@@ -2,7 +2,7 @@ import type { Composition } from '@/lib/types';
 
 /**
  * Publicly-documented filmography / discography (factual metadata only).
- * Posters are original vector placeholders — no copyrighted artwork.
+ * Posters are original vector placeholders, no copyrighted artwork.
  */
 export const compositions: Composition[] = [
   {
@@ -171,7 +171,7 @@ export const compositions: Composition[] = [
     title: 'How To Name It?',
     year: 1986,
     language: 'Instrumental',
-    director: '—',
+    director: 'Ilaiyaraaja',
     label: 'Oriental Records',
     genre: 'Fusion',
     songs: 12,
@@ -184,7 +184,7 @@ export const compositions: Composition[] = [
     title: 'Nothing But Wind',
     year: 1988,
     language: 'Instrumental',
-    director: '—',
+    director: 'Ilaiyaraaja',
     label: 'HMV',
     genre: 'Fusion',
     songs: 6,
@@ -197,7 +197,7 @@ export const compositions: Composition[] = [
     title: 'Thiruvasagam In Symphony',
     year: 2005,
     language: 'Tamil',
-    director: '—',
+    director: 'Ilaiyaraaja',
     label: 'Sruthilaya',
     genre: 'Devotional / Symphony',
     songs: 10,
@@ -207,7 +207,7 @@ export const compositions: Composition[] = [
   },
   {
     id: 'bs1',
-    title: 'Nayakan — Background Score',
+    title: 'Nayakan, Background Score',
     year: 1987,
     language: 'Instrumental',
     director: 'Mani Ratnam',
@@ -219,7 +219,7 @@ export const compositions: Composition[] = [
   },
   {
     id: 'bs2',
-    title: 'Thalapathi — Background Score',
+    title: 'Thalapathi, Background Score',
     year: 1991,
     language: 'Instrumental',
     director: 'Mani Ratnam',
@@ -234,7 +234,7 @@ export const compositions: Composition[] = [
     title: 'Symphonic Works',
     year: 1993,
     language: 'Instrumental',
-    director: '—',
+    director: 'Ilaiyaraaja',
     label: 'Royal Philharmonic',
     genre: 'Symphony',
     songs: 8,

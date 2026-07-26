@@ -7,7 +7,7 @@ export const site = {
   tagline: 'Composer · Conductor · Singer · Lyricist · Music Producer',
   url: 'https://www.ilaiyaraaja-official.com',
   description:
-    'The official-style portfolio of Isaignani Ilaiyaraaja — legendary Indian composer, conductor, singer and lyricist who has scored more than a thousand films across five decades.',
+    'The official-style portfolio of Isaignani Ilaiyaraaja, legendary Indian composer, conductor, singer and lyricist who has scored more than a thousand films across five decades.',
   keywords: [
     'Ilaiyaraaja',
     'Isaignani',
@@ -120,7 +120,7 @@ export const slides: Slide[] = [
     id: 's3',
     tag: 'On Screen',
     title: 'The Latest Scores',
-    subtitle: 'From intimate dramas to sweeping epics — the sound of Indian cinema.',
+    subtitle: 'From intimate dramas to sweeping epics, the sound of Indian cinema.',
     image: unsplash(PHOTO.stageLights, 1800, 1000),
     fallback: '/img/slide-movie.svg',
     ctaLabel: 'Browse films',
@@ -161,7 +161,7 @@ export const posts: Post[] = [
     id: 'p2',
     category: 'Maestroverse',
     title: 'Maestroverse Concerts',
-    blurb: 'The Maestro takes the stage — a world tour of live orchestral concerts.',
+    blurb: 'The Maestro takes the stage, a world tour of live orchestral concerts.',
     image: unsplash(PHOTO.concert, 900, 700),
     fallback: '/img/post-maestroverse.svg',
   },
@@ -177,7 +177,7 @@ export const posts: Post[] = [
     id: 'p4',
     category: 'Studio Sessions',
     title: 'Live From Studio',
-    blurb: 'Behind the console — a rare look inside the maestro’s recording sessions.',
+    blurb: 'Behind the console, a rare look inside the maestro’s recording sessions.',
     image: unsplash(PHOTO.stageLights, 900, 700),
     fallback: '/img/post-studio.svg',
   },
@@ -190,7 +190,7 @@ export const news: NewsItem[] = [
     kicker: 'Symphony',
     title: 'Ilaiyaraaja premieres new symphony with a European orchestra',
     excerpt:
-      'The maestro conducts a full symphonic work — the latest chapter in a lifelong dialogue between Indian melody and Western classical form.',
+      'The maestro conducts a full symphonic work, the latest chapter in a lifelong dialogue between Indian melody and Western classical form.',
     image: unsplash(PHOTO.orchestra, 1000, 700),
     fallback: '/img/news-1.svg',
     source: 'Press Release',
@@ -236,7 +236,7 @@ export const facts = [
     id: 'f3',
     icon: 'Image',
     role: 'Photographer',
-    text: 'An eye as keen as his ear — he frames the world in stills with the same instinct he brings to sound.',
+    text: 'An eye as keen as his ear, he frames the world in stills with the same instinct he brings to sound.',
   },
   {
     id: 'f4',

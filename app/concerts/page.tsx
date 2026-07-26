@@ -8,7 +8,7 @@ import { ConcertsExplorer } from '@/components/concerts/ConcertsExplorer';
 export const metadata: Metadata = {
   title: 'Concerts',
   description:
-    'Maestroverse and Live In Concert — upcoming and past performances of Ilaiyaraaja around the world, with venues, cities and booking links.',
+    'Maestroverse and Live In Concert, upcoming and past performances of Ilaiyaraaja around the world, with venues, cities and booking links.',
   alternates: { canonical: '/concerts' },
 };
 
@@ -19,7 +19,7 @@ export default function ConcertsPage() {
         eyebrow="Live On Stage"
         icon="Mic2"
         title="Concerts"
-        subtitle="Experience the maestro live — a symphonic journey through the songs that scored a generation."
+        subtitle="Experience the maestro live, a symphonic journey through the songs that scored a generation."
       />
       <Section>
         <Suspense fallback={<Skeleton className="h-64 w-full" />}>

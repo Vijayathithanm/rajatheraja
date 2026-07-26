@@ -112,7 +112,7 @@ export function CompositionsExplorer() {
           >
             <option value="year-desc">Newest first</option>
             <option value="year-asc">Oldest first</option>
-            <option value="title">Title A–Z</option>
+            <option value="title">Title A-Z</option>
             <option value="songs">Most songs</option>
           </select>
         </div>

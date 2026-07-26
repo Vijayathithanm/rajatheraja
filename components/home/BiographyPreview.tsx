@@ -15,7 +15,7 @@ export function BiographyPreview() {
               <Media
                 src="/img/ilaiyaraaja-portrait-bw.jpg"
                 fallbackSrc="/img/bio-portrait.svg"
-                alt="Ilaiyaraaja — the maestro, in performance"
+                alt="Ilaiyaraaja, the maestro, in performance"
                 width={573}
                 height={415}
                 className="h-auto w-full"

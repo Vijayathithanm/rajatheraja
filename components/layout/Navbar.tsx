@@ -34,7 +34,7 @@ export function Navbar() {
       >
         <nav className="container-page flex h-[72px] items-center justify-between gap-4" aria-label="Primary">
           {/* Brand */}
-          <Link href="/" className="group flex items-center gap-2.5" aria-label="Ilaiyaraaja — home">
+          <Link href="/" className="group flex items-center gap-2.5" aria-label="Ilaiyaraaja, home">
             <span className="flex h-9 w-9 items-center justify-center rounded-full border border-gold/40 text-gold transition-colors group-hover:bg-gold group-hover:text-white">
               <Music4 className="h-4 w-4" strokeWidth={1.75} />
             </span>

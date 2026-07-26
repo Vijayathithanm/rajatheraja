@@ -23,7 +23,7 @@ const sans = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.fullName} — Official`,
+    default: `${site.fullName} · Official`,
     template: `%s · ${site.name}`,
   },
   description: site.description,
@@ -34,14 +34,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: site.url,
-    title: `${site.fullName} — Official`,
+    title: `${site.fullName} · Official`,
     description: site.description,
     siteName: site.fullName,
     locale: 'en_IN',
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${site.fullName} — Official`,
+    title: `${site.fullName} · Official`,
     description: site.description,
   },
   robots: { index: true, follow: true },

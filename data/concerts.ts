@@ -5,7 +5,7 @@ import { unsplash, PHOTO } from '@/lib/images';
 export const concerts: Concert[] = [
   {
     id: 'k1',
-    title: 'Maestroverse — London',
+    title: 'Maestroverse, London',
     series: 'Maestroverse',
     status: 'Upcoming',
     date: '2026-09-14',
@@ -18,7 +18,7 @@ export const concerts: Concert[] = [
   },
   {
     id: 'k2',
-    title: 'Maestroverse — Singapore',
+    title: 'Maestroverse, Singapore',
     series: 'Maestroverse',
     status: 'Upcoming',
     date: '2026-10-05',
@@ -31,7 +31,7 @@ export const concerts: Concert[] = [
   },
   {
     id: 'k3',
-    title: 'Maestroverse — Toronto',
+    title: 'Maestroverse, Toronto',
     series: 'Maestroverse',
     status: 'Upcoming',
     date: '2026-11-08',
@@ -44,7 +44,7 @@ export const concerts: Concert[] = [
   },
   {
     id: 'l1',
-    title: 'Live In Concert — Chennai',
+    title: 'Live In Concert, Chennai',
     series: 'Live In Concert',
     status: 'Completed',
     date: '2025-12-20',
@@ -57,7 +57,7 @@ export const concerts: Concert[] = [
   },
   {
     id: 'l2',
-    title: 'Live In Concert — Dubai',
+    title: 'Live In Concert, Dubai',
     series: 'Live In Concert',
     status: 'Completed',
     date: '2025-11-01',
@@ -70,7 +70,7 @@ export const concerts: Concert[] = [
   },
   {
     id: 'l3',
-    title: 'Live In Concert — Sydney',
+    title: 'Live In Concert, Sydney',
     series: 'Live In Concert',
     status: 'Completed',
     date: '2025-09-27',
