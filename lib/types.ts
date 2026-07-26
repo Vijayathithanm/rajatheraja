@@ -40,6 +40,7 @@ export interface Concert {
   country: string;
   bookingUrl: string;
   image: string;
+  fallback?: string;
 }
 
 export type AwardCategory =
@@ -83,6 +84,7 @@ export interface GalleryItem {
   title: string;
   caption: string;
   image: string;
+  fallback?: string;
   span?: 'wide' | 'tall' | 'normal';
 }
 
@@ -93,6 +95,7 @@ export interface NewsItem {
   title: string;
   excerpt: string;
   image: string;
+  fallback?: string;
   source?: string;
 }
 
@@ -102,6 +105,7 @@ export interface Post {
   title: string;
   blurb: string;
   image: string;
+  fallback?: string;
 }
 
 export interface QuizQuestion {
@@ -126,6 +130,7 @@ export interface Slide {
   title: string;
   subtitle: string;
   image: string;
+  fallback?: string;
   ctaLabel: string;
   ctaHref: string;
 }

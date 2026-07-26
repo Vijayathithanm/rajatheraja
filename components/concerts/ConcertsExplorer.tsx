@@ -78,7 +78,7 @@ export function ConcertsExplorer() {
             <RevealItem key={c.id}>
               <article className="card card-hover group flex h-full flex-col overflow-hidden sm:flex-row">
                 <div className="relative aspect-[16/10] overflow-hidden sm:aspect-auto sm:w-2/5">
-                  <Media src={c.image} alt={c.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width:640px) 100vw, 40vw" />
+                  <Media src={c.image} fallbackSrc={c.fallback} alt={c.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width:640px) 100vw, 40vw" />
                   <span
                     className={cn(
                       'absolute left-3 top-3 rounded-full px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-widest2',
