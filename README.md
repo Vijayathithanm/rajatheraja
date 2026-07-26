@@ -1,102 +1,145 @@
-# Ilaiyaraaja — Interactive 3D Experience
+# Isaignani Ilaiyaraaja — Official-style Portfolio
 
-A single-page, gallery-minimal tribute to the maestro **Ilaiyaraaja**, built
-with **React Three Fiber** + **@react-three/drei** for a persistent white 3D
-stage and **Tailwind CSS** for the 2D overlay. Pure-white background, charcoal
-ink, one restrained gold accent.
+A premium, minimal, fully-responsive tribute & portfolio website for the legendary
+Indian composer **Isaignani Ilaiyaraaja**. Built to feel timeless and world-class —
+pure white canvas, elegant Playfair Display / Inter typography, a single gold accent,
+generous white space, tasteful music-note motifs and smooth Framer Motion animation.
+
+> This is an independent tribute/demonstration built entirely from **publicly available
+> factual information** and **original, license-safe vector placeholder imagery**.
+> It is not an official commercial website and hosts no copyrighted media.
 
 ---
 
-## Run it
+## ✨ Features
+
+- **Home** — parallax-style hero with floating music notes & animated equalizer, an
+  auto-sliding Embla hero carousel, animated statistic counters, biography preview,
+  latest posts, latest news and an “interesting facts” grid.
+- **Biography** — interactive vertical milestone timeline (birth → international
+  recognition → Parliament).
+- **Compositions** — filter tabs (Movies / Albums / Background Score / Devotional /
+  Independent), live search, sorting and pagination. Each card shows year, language,
+  director, label, genre and song count.
+- **Concerts** — Maestroverse & Live-In-Concert series, Upcoming/Completed filters,
+  venue, country and booking links.
+- **Awards** — animated counters plus a category-filterable honours timeline
+  (National, State, Filmfare, Padma, International, Honorary Doctorates).
+- **Shop** — product grid (Books / CD / Vinyl / Merchandise / Collections) with a
+  demo bag.
+- **Gallery** — masonry layout with an accessible lightbox.
+- **Quiz** — interactive trivia game with live score and leaderboard.
+- **Apply Certificate** — validated online form.
+- **Admin Dashboard** — a localStorage-backed CMS to add/edit/delete News, Posts,
+  Concerts, Compositions, Products, the Homepage Slider, Gallery and Quiz.
+- **Global search**, sticky glass navigation, scroll-progress bar, loading skeletons,
+  404 page, full SEO (metadata, Open Graph, Twitter cards, JSON-LD structured data,
+  sitemap, robots) and accessibility (skip link, ARIA, focus states, reduced-motion).
+
+## 🧰 Tech Stack
+
+| Area          | Choice                                             |
+| ------------- | -------------------------------------------------- |
+| Framework     | **Next.js 14** (App Router, static export)         |
+| Language      | **TypeScript**                                     |
+| Styling       | **Tailwind CSS** (custom brand palette)            |
+| Animation     | **Framer Motion**                                  |
+| Icons         | **Lucide** (music-themed throughout)               |
+| Carousel      | **Embla Carousel** (+ autoplay)                    |
+| Data layer    | **React Query** over a mockable services layer     |
+| Fonts         | **Playfair Display** (headings) + **Inter** (body) |
+
+## 🎨 Design Tokens
+
+| Token          | Value     |
+| -------------- | --------- |
+| Background     | `#FFFFFF` |
+| Primary text   | `#222222` |
+| Secondary text | `#666666` |
+| Accent (gold)  | `#C8A542` |
+| Borders        | `#ECECEC` |
+| Hover surface  | `#F7F7F7` |
+
+## 📁 Project Structure
+
+```
+app/                     # App Router pages (home, biography, compositions, concerts,
+                         #   awards, shop, gallery, quiz, certificate, admin, legal),
+                         #   layout, robots.ts, sitemap.ts, icon.svg, not-found, loading
+components/
+  layout/                # Navbar, Footer, Providers (React Query), ScrollProgress
+  ui/                    # Reveal, Section, PageHeader, Counter, Icon, Media, Skeleton,
+                         #   MusicNotes/Equalizer, PianoDivider, LegalPage
+  home/                  # Hero, HeroSlider, Stats, BiographyPreview, LatestPosts,
+                         #   LatestNews, Facts
+  biography/ compositions/ concerts/ awards/ shop/ gallery/ quiz/ certificate/ admin/
+  search/                # GlobalSearch modal
+data/                    # Mock content (site, biography, compositions, concerts,
+                         #   awards, shop, gallery, quiz)
+lib/                     # types, utils, hooks, services (API layer), cms (localStorage)
+scripts/                 # generate-placeholders.mjs — builds all SVG imagery
+public/img/              # Generated placeholder artwork
+```
+
+## 🚀 Getting Started
 
 ```bash
+# 1. Install dependencies
 npm install
-npm run dev      # http://localhost:3000
-npm run build    # static export → ./out  (no server needed)
+
+# 2. (Optional) regenerate placeholder imagery
+node scripts/generate-placeholders.mjs
+
+# 3. Run the dev server
+npm run dev          # http://localhost:3000
+
+# 4. Production build (static export → ./out)
+npm run build
 ```
 
-The site is a **static export** (`output: 'export'`) — the `out/` folder can be
-hosted on any static host.
+## 🗂️ Data & the “API” layer
 
----
+The site is a **fully static export**, so there is no server at runtime. To keep a clean,
+production-shaped architecture:
 
-## The 3D concept
+- All content lives in `data/` as typed mock data.
+- `lib/services.ts` exposes async functions (`getCompositions`, `getConcerts`, …) that
+  return Promises — the components consume them through **React Query** exactly as they
+  would a real REST/GraphQL backend. Swap the function bodies for `fetch()` calls to go
+  live without touching any component.
+- `lib/cms.ts` merges any **Admin dashboard** edits (saved to `localStorage`) on top of
+  the seed data, so admin changes appear instantly across the site.
 
-- **Sound ribbon (hero centrepiece)** — one indexed plane geometry whose
-  vertices undulate like a waveform via layered sine noise. Pressing **Play**
-  routes a soft synthesised ambient chord through a Web Audio `AnalyserNode`,
-  and the ribbon amplitude is driven by real frequency data; **Pause** settles
-  it into calm procedural motion. Matte charcoal surface, thin gold edge
-  highlights, a soft contact shadow, and a gentle tilt toward the cursor.
-  _(To drive it from a real recording, drop `public/audio/theme.mp3` and follow
-  the clearly-marked `SWAP` block in [`lib/audio.ts`](lib/audio.ts).)_
-- **Vinyl gallery** — the Facets and Latest Posts appear as upright vinyl
-  records on the same white stage, slowly spinning. One disc geometry +
-  material is **reused** across every record; only the label textures differ.
-  Hover slows the spin, scales up, lifts and glows gold; click flips a record
-  to reveal its description on the back.
-- **Scroll-driven camera** — as you scroll, the camera pulls back and pans so
-  the ribbon recedes and the gallery rotates into frame. Biography, Latest
-  News and the footer float above as 2D panels, so the white 3D stage stays
-  continuous behind all content.
+## 🔐 Admin Dashboard
 
-### Performance & accessibility
+Visit **`/admin`**, enter any passphrase (demo gate), and manage every collection.
+Edits persist to your browser’s local storage and can be reset per-collection.
+In production, replace `lib/cms.ts` with calls to a real database/CMS.
 
-- Three.js scene is `dynamic(..., { ssr: false })` and code-split — initial
-  first-load JS for the page is ~101 kB; the WebGL bundle loads after.
-- Capped pixel ratio, adaptive DPR, fewer ribbon segments on mobile, one
-  shared record geometry/material, and heavy work **pauses when the tab is
-  hidden**.
-- `prefers-reduced-motion` is respected everywhere: the ribbon freezes into a
-  static curve, records stop spinning, reveal animations and Lenis smooth
-  scroll are disabled.
-- Keyboard-navigable nav dropdowns (`aria-expanded`, Escape to close), alt text
-  on every image, focus-visible rings, and a `<noscript>` fallback so content
-  is never left hidden.
+## 🖼️ Replacing Placeholder Imagery
 
----
+All artwork under `public/img/` is generated by `scripts/generate-placeholders.mjs`
+(pure white, gold-accented, music-themed SVGs). Drop officially-licensed photography
+into `public/img/` using the same file names — search the codebase for image paths
+(`/img/…`) to see where each is used.
 
-## Architecture
+## 📦 Deployment (GitHub Pages)
 
-```
-app/
-  layout.tsx          Fonts (Playfair Display + Inter), metadata, JSON-LD
-  page.tsx            Renders <App/>
-  globals.css         White/gold tokens, scene layering, reveal + reduced-motion
-  robots.ts sitemap.ts SEO (static-export compatible)
-content/
-  site.ts             ★ Single source of truth for all copy & links
-components/
-  App.tsx             Composition; below-the-fold sections are code-split
-  Providers.tsx       Lenis smooth scroll + scroll/pointer/visibility → store
-  Navbar.tsx  Footer.tsx
-  Scene.tsx           Lazy, client-only wrapper around the Canvas
-  three/
-    SceneCanvas.tsx   Canvas, lights, contact shadow, perf guards
-    SoundRibbon.tsx   Audio-reactive waveform ribbon
-    VinylGallery.tsx  Shared-geometry record gallery
-    VinylRecord.tsx   One reusable, interactive record
-    Rig.tsx  Lights.tsx
-  sections/           Hero, Biography, LatestPosts, LatestNews, Facets
-  ui/TiltCard.tsx     Cursor-tilt / lift card
-lib/
-  store.ts            Frame-loop shared state (no re-renders)
-  audio.ts            Web Audio engine + AnalyserNode
-  hooks.ts  utils.ts
-```
+`.github/workflows/deploy.yml` builds the static export and publishes it to GitHub Pages
+on every push to `main`. The workflow injects `NEXT_PUBLIC_BASE_PATH` automatically, and
+`next/image` prefixes it, so the site works from a project sub-path or a custom domain.
+The output is a plain static bundle — it can equally be hosted on Vercel, Netlify,
+Cloudflare Pages or any static host.
 
-## Swapping in real assets
+## ♿ Accessibility & Performance
 
-All copy lives in [`content/site.ts`](content/site.ts). Every placeholder is
-marked — search the codebase for **`SWAP`** to find each spot:
+- Semantic HTML, ARIA labels, keyboard-navigable menus, visible focus rings.
+- `prefers-reduced-motion` disables non-essential animation.
+- Lazy-loaded, optimized images and code-split routes for fast first loads.
 
-- Hero banners, post/news/facet images → drop real files in `public/images/…`
-  and update the paths in `content/site.ts`.
-- Biography intro film → `public/video/intro.mp4` (a `.mov` source can be added
-  alongside).
-- Real audio track for the ribbon → `public/audio/theme.mp3` (see `lib/audio.ts`).
+## 📜 Content Sources & Licensing
 
-## Tech
-
-Next.js 14 · React 18 · TypeScript · React Three Fiber + drei · Three.js ·
-Tailwind CSS · Framer Motion · Lenis · Lucide icons.
+Factual information (biography, filmography, awards) is drawn from open public sources
+such as encyclopaedias and public music/film databases. No copyrighted audio, video or
+photographs are included — every image is an original vector placeholder.
+See `/disclaimer`, `/privacy` and `/terms` in the app.

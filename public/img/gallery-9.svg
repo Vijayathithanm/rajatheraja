@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000" role="img">
+  <rect width="800" height="1000" fill="#FFFFFF"/>
+  
+    <rect x="14" y="14" width="772" height="972" fill="none" stroke="#ECECEC" stroke-width="2"/>
+    <line x1="0" y1="472" x2="800" y2="472" stroke="#ECECEC" stroke-width="1"/><line x1="0" y1="486" x2="800" y2="486" stroke="#ECECEC" stroke-width="1"/><line x1="0" y1="500" x2="800" y2="500" stroke="#ECECEC" stroke-width="1"/><line x1="0" y1="514" x2="800" y2="514" stroke="#ECECEC" stroke-width="1"/><line x1="0" y1="528" x2="800" y2="528" stroke="#ECECEC" stroke-width="1"/>
+    <g transform="translate(400,470) scale(2.6)" opacity="0.85">
+    <path d="M2,-40 C-14,-30 -14,-6 2,2 C18,10 18,34 2,40 C-8,44 -18,38 -18,26 C-18,16 -10,12 -4,16
+             M2,2 L2,60 C2,72 -8,76 -16,70"
+      fill="none" stroke="#C8A542" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="-8" cy="66" r="6" fill="#C8A542"/>
+  </g>
+    <text x="400" y="930" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#222222">Frame 9</text>
+  
+</svg>

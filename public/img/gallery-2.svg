@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800" role="img">
+  <rect width="800" height="800" fill="#FFFFFF"/>
+  
+    <rect x="14" y="14" width="772" height="772" fill="none" stroke="#ECECEC" stroke-width="2"/>
+    <line x1="0" y1="372" x2="800" y2="372" stroke="#ECECEC" stroke-width="1"/><line x1="0" y1="386" x2="800" y2="386" stroke="#ECECEC" stroke-width="1"/><line x1="0" y1="400" x2="800" y2="400" stroke="#ECECEC" stroke-width="1"/><line x1="0" y1="414" x2="800" y2="414" stroke="#ECECEC" stroke-width="1"/><line x1="0" y1="428" x2="800" y2="428" stroke="#ECECEC" stroke-width="1"/>
+    <g transform="translate(400,370) scale(2.4)" opacity="0.85">
+    <circle cx="0" cy="18" r="9" fill="#C8A542"/>
+    <rect x="8" y="-24" width="3.5" height="42" fill="#C8A542"/>
+    <path d="M8,-24 C22,-20 24,-8 18,-2 C22,-12 16,-18 8,-16 Z" fill="#C8A542"/>
+  </g>
+    <text x="400" y="730" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#222222">Frame 2</text>
+  
+</svg>

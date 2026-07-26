@@ -3,105 +3,136 @@
 @tailwind utilities;
 
 /* ─────────────────────────────────────────────────────────────
-   Ilaiyaraaja — global styles
-   Pure-white, gallery-minimal. Charcoal ink, a single gold accent.
+   Isaignani Ilaiyaraaja — Official
+   Pure-white, premium-minimal. Dark-grey ink, a single gold accent.
+   Playfair Display for headings, Inter for everything else.
    ───────────────────────────────────────────────────────────── */
 
 :root {
   --paper: 255 255 255;
-  --ink: 26 26 26;
-  --gold: 200 160 71;
+  --ink: 34 34 34;
+  --gold: 200 165 66;
 }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-  background: #ffffff;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    background: #ffffff;
+    scroll-padding-top: 88px; /* offset for the sticky nav on anchor jumps */
+  }
+
+  body {
+    @apply bg-paper text-ink antialiased font-sans;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgb(var(--gold) / 0.22);
+    color: rgb(var(--ink));
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--gold));
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
 }
 
-/* Lenis smooth-scroll hooks (JS falls back to native scroll if disabled) */
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
+@layer components {
+  /* Section shell — generous white space, centred content column. */
+  .container-page {
+    @apply mx-auto w-full max-w-content px-6 sm:px-8 lg:px-12;
+  }
+
+  /* Small uppercase gold eyebrow above headings. */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-widest2 text-gold;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold
+           transition-all duration-300 ease-smooth focus-visible:outline-none;
+  }
+  .btn-primary {
+    @apply btn bg-ink text-white hover:bg-black hover:shadow-lift hover:-translate-y-0.5;
+  }
+  .btn-gold {
+    @apply btn bg-gold text-white hover:bg-gold-deep hover:shadow-lift hover:-translate-y-0.5;
+  }
+  .btn-outline {
+    @apply btn border border-line text-ink hover:border-gold hover:text-gold hover:bg-hover;
+  }
+
+  .card {
+    @apply rounded-2xl border border-line bg-paper transition-all duration-500 ease-smooth;
+  }
+  .card-hover {
+    @apply hover:-translate-y-1.5 hover:shadow-lift hover:border-gold-soft;
+  }
+
+  .hairline {
+    @apply h-px w-full bg-line;
+  }
 }
 
-body {
-  @apply bg-paper text-ink antialiased font-sans;
-  overflow-x: hidden;
-}
-
-::selection {
-  background: rgb(var(--gold) / 0.22);
-  color: rgb(var(--ink));
-}
-
-/* ── Fixed 3D stage sits behind everything ─────────────────── */
-.scene-layer {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none; /* per-object interaction re-enabled in the Canvas */
-}
-
-/* Content flows above the stage. It is transparent so the white 3D
-   canvas shows through as one continuous surface.
-   `pointer-events: none` lets the cursor reach 3D objects in the gaps;
-   individual interactive elements opt back in via `.interactive`. */
-.content-layer {
-  position: relative;
-  z-index: 10;
-  pointer-events: none;
-}
-.interactive {
-  pointer-events: auto;
-}
-
-/* ── Reveal-on-scroll (IntersectionObserver toggles .is-visible) ── */
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity, transform;
-}
-.reveal.is-visible {
-  opacity: 1;
-  transform: none;
-}
-
-/* ── Thin scrollbar ─────────────────────────────────────────── */
+/* Thin, elegant scrollbar */
 ::-webkit-scrollbar {
-  width: 9px;
+  width: 10px;
+  height: 10px;
 }
 ::-webkit-scrollbar-track {
   background: #ffffff;
 }
 ::-webkit-scrollbar-thumb {
-  background: #dcdcdc;
+  background: #e4e4e4;
   border-radius: 9px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #c8a047;
+  background: #c8a542;
 }
 
-/* ── Focus ring for keyboard users ──────────────────────────── */
-:focus-visible {
-  outline: 2px solid rgb(var(--gold));
-  outline-offset: 3px;
-  border-radius: 2px;
+/* Loading skeleton shimmer */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #f1f1f1;
+}
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
 }
 
-/* ── Reduced motion: freeze non-essential animation everywhere ── */
+/* Embla carousel base */
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+/* Reduced motion: freeze non-essential animation everywhere */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
   }
   *,
   *::before,

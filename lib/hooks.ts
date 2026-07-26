@@ -1,57 +1,86 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-/** Live boolean for the `prefers-reduced-motion` media query. */
-export function useReducedMotion(): boolean {
-  const [reduced, setReduced] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const update = () => setReduced(mq.matches);
-    update();
-    mq.addEventListener('change', update);
-    return () => mq.removeEventListener('change', update);
-  }, []);
-  return reduced;
-}
+/** Count from 0 → target once the element scrolls into view. */
+export function useCountUp(target: number, duration = 1600) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [value, setValue] = useState(0);
+  const started = useRef(false);
 
-/** True below the given breakpoint — used to dial down 3D complexity on mobile. */
-export function useIsMobile(breakpoint = 768): boolean {
-  const [mobile, setMobile] = useState(false);
   useEffect(() => {
-    const mq = window.matchMedia(`(max-width: ${breakpoint}px)`);
-    const update = () => setMobile(mq.matches);
-    update();
-    mq.addEventListener('change', update);
-    return () => mq.removeEventListener('change', update);
-  }, [breakpoint]);
-  return mobile;
-}
-
-/**
- * Reveal-on-scroll: adds `.is-visible` to elements with `.reveal` once they
- * enter the viewport. Progressive enhancement — content is fully readable
- * even if JS never runs (CSS keeps it visible under reduced-motion).
- */
-export function useScrollReveal() {
-  useEffect(() => {
-    const els = Array.from(document.querySelectorAll<HTMLElement>('.reveal'));
-    if (!('IntersectionObserver' in window) || els.length === 0) {
-      els.forEach((el) => el.classList.add('is-visible'));
+    const el = ref.current;
+    if (!el) return;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+      setValue(target);
       return;
     }
     const io = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            io.unobserve(entry.target);
+        entries.forEach((e) => {
+          if (e.isIntersecting && !started.current) {
+            started.current = true;
+            const start = performance.now();
+            const tick = (now: number) => {
+              const p = Math.min((now - start) / duration, 1);
+              const eased = 1 - Math.pow(1 - p, 3);
+              setValue(Math.round(target * eased));
+              if (p < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
           }
         });
       },
-      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' },
+      { threshold: 0.4 },
     );
-    els.forEach((el) => io.observe(el));
+    io.observe(el);
     return () => io.disconnect();
+  }, [target, duration]);
+
+  return { ref, value };
+}
+
+/** Track document scroll progress 0 → 1 for a top progress bar. */
+export function useScrollProgress() {
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    const onScroll = () => {
+      const h = document.documentElement;
+      const scrolled = h.scrollTop;
+      const height = h.scrollHeight - h.clientHeight;
+      setProgress(height > 0 ? scrolled / height : 0);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
+  return progress;
+}
+
+/** True once the page has scrolled past `threshold` px. */
+export function useScrolled(threshold = 12) {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > threshold);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [threshold]);
+  return scrolled;
+}
+
+/** Re-render subscribers when the localStorage-backed CMS changes. */
+export function useCmsVersion() {
+  const [v, setV] = useState(0);
+  useEffect(() => {
+    const onUpdate = () => setV((x) => x + 1);
+    window.addEventListener('cms:update', onUpdate);
+    window.addEventListener('storage', onUpdate);
+    return () => {
+      window.removeEventListener('cms:update', onUpdate);
+      window.removeEventListener('storage', onUpdate);
+    };
+  }, []);
+  return v;
 }

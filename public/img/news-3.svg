@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="700" viewBox="0 0 1000 700" role="img">
+  <rect width="1000" height="700" fill="#FFFFFF"/>
+  
+    <rect x="14" y="14" width="972" height="672" fill="none" stroke="#ECECEC" stroke-width="2"/>
+    <line x1="0" y1="322" x2="1000" y2="322" stroke="#ECECEC" stroke-width="1"/><line x1="0" y1="336" x2="1000" y2="336" stroke="#ECECEC" stroke-width="1"/><line x1="0" y1="350" x2="1000" y2="350" stroke="#ECECEC" stroke-width="1"/><line x1="0" y1="364" x2="1000" y2="364" stroke="#ECECEC" stroke-width="1"/><line x1="0" y1="378" x2="1000" y2="378" stroke="#ECECEC" stroke-width="1"/>
+    <g transform="translate(500,320) scale(2.6)" opacity="0.85">
+    <path d="M2,-40 C-14,-30 -14,-6 2,2 C18,10 18,34 2,40 C-8,44 -18,38 -18,26 C-18,16 -10,12 -4,16
+             M2,2 L2,60 C2,72 -8,76 -16,70"
+      fill="none" stroke="#C8A542" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="-8" cy="66" r="6" fill="#C8A542"/>
+  </g>
+    <text x="500" y="630" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#222222">New Album</text>
+  
+</svg>
