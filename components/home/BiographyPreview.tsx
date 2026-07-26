@@ -13,10 +13,11 @@ export function BiographyPreview() {
           <div className="relative mx-auto max-w-sm">
             <div className="overflow-hidden rounded-[2rem] border border-line shadow-soft">
               <Media
-                src="/img/bio-portrait.svg"
-                alt="Ilaiyaraaja — the maestro"
-                width={900}
-                height={1100}
+                src="/img/ilaiyaraaja-portrait-bw.jpg"
+                fallbackSrc="/img/bio-portrait.svg"
+                alt="Ilaiyaraaja — the maestro, in performance"
+                width={573}
+                height={415}
                 className="h-auto w-full"
               />
             </div>
