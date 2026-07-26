@@ -1,34 +1,48 @@
 import type { Metadata } from 'next';
 import { Playfair_Display, Inter } from 'next/font/google';
 import './globals.css';
-import { seo } from '@/content/site';
+import { site } from '@/data/site';
+import { Providers } from '@/components/layout/Providers';
+import { Navbar } from '@/components/layout/Navbar';
+import { Footer } from '@/components/layout/Footer';
+import { ScrollProgress } from '@/components/layout/ScrollProgress';
 
-/* Bold display serif for headings, clean sans for body. */
 const display = Playfair_Display({
   subsets: ['latin'],
-  weight: ['600', '700', '800', '900'],
+  weight: ['500', '600', '700', '800', '900'],
   variable: '--font-display',
   display: 'swap',
 });
-const sans = Inter({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
+const sans = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-sans',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
-  metadataBase: new URL(seo.siteUrl),
-  title: seo.title,
-  description: seo.description,
-  keywords: seo.keywords,
-  authors: [{ name: 'Ilaiyaraaja' }],
+  metadataBase: new URL(site.url),
+  title: {
+    default: `${site.fullName} — Official`,
+    template: `%s · ${site.name}`,
+  },
+  description: site.description,
+  keywords: site.keywords,
+  authors: [{ name: site.fullName }],
+  applicationName: `${site.fullName} Official`,
+  alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
-    url: seo.siteUrl,
-    title: seo.title,
-    description: seo.description,
-    siteName: 'Ilaiyaraaja',
+    url: site.url,
+    title: `${site.fullName} — Official`,
+    description: site.description,
+    siteName: site.fullName,
+    locale: 'en_IN',
   },
   twitter: {
     card: 'summary_large_image',
-    title: seo.title,
-    description: seo.description,
+    title: `${site.fullName} — Official`,
+    description: site.description,
   },
   robots: { index: true, follow: true },
 };
@@ -38,9 +52,14 @@ const jsonLd = {
   '@type': 'Person',
   name: 'Ilaiyaraaja',
   alternateName: 'Isaignani',
-  jobTitle: 'Composer, Songwriter and Conductor',
-  url: seo.siteUrl,
-  sameAs: ['https://www.youtube.com/@ilaiyaraaja'],
+  jobTitle: ['Composer', 'Conductor', 'Singer', 'Lyricist', 'Music Producer'],
+  description: site.description,
+  url: site.url,
+  sameAs: [
+    'https://en.wikipedia.org/wiki/Ilaiyaraaja',
+    'https://www.youtube.com/@ilaiyaraaja',
+    'https://twitter.com/ilaiyaraaja',
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -51,12 +70,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {/* If JS is disabled, don't leave reveal-on-scroll content hidden. */}
-        <noscript>
-          <style>{`.reveal{opacity:1!important;transform:none!important}`}</style>
-        </noscript>
       </head>
-      <body>{children}</body>
+      <body>
+        <Providers>
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:text-white"
+          >
+            Skip to content
+          </a>
+          <ScrollProgress />
+          <Navbar />
+          <main id="main">{children}</main>
+          <Footer />
+        </Providers>
+      </body>
     </html>
   );
 }

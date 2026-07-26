@@ -1,27 +1,32 @@
-export function cn(...classes: (string | false | null | undefined)[]) {
-  return classes.filter(Boolean).join(' ');
+import { clsx, type ClassValue } from 'clsx';
+
+/** Tailwind-friendly conditional className helper. */
+export function cn(...inputs: ClassValue[]) {
+  return clsx(inputs);
 }
 
-/**
- * Prefix a public asset path with the deployment base path so links work
- * both at the domain root and under a GitHub Pages sub-path (/Vijayathithanm).
- */
+/** Prefix a public asset path with the deploy base path (GitHub Pages safe). */
 export function asset(path: string) {
-  // External URLs (real HD images from the internet) are used as-is.
-  if (/^https?:\/\//.test(path)) return path;
-  const base = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+  const base = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  if (!path.startsWith('/')) return path;
   return `${base}${path}`;
 }
 
-/**
- * Smoothly scroll to an in-page anchor (e.g. "#facets"). Honours
- * `prefers-reduced-motion` by jumping instantly. Returns true if handled.
- */
-export function scrollToHash(hash: string): boolean {
-  if (typeof document === 'undefined' || !hash.startsWith('#') || hash === '#') return false;
-  const el = document.querySelector(hash);
-  if (!el) return false;
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-  return true;
+export function formatDate(iso: string) {
+  const d = new Date(iso);
+  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+export function formatMonthYear(iso: string) {
+  const d = new Date(iso);
+  return d.toLocaleDateString('en-GB', { month: 'short', year: 'numeric' });
+}
+
+export function formatPrice(value: number, currency = '₹') {
+  return `${currency}${value.toLocaleString('en-IN')}`;
+}
+
+/** Small deterministic delay so React Query loading states are visible. */
+export function delay<T>(value: T, ms = 350): Promise<T> {
+  return new Promise((resolve) => setTimeout(() => resolve(value), ms));
 }
