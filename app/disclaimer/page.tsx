@@ -28,7 +28,7 @@ export default function DisclaimerPage() {
         {
           heading: 'Imagery',
           body: [
-            'All imagery on this site consists of original, license-safe vector placeholders. They are intended to be replaced with officially licensed photography in a production deployment.',
+            'Photographs of the artist are used for identification and tribute purposes and remain the property of their respective photographers and copyright owners. All other imagery consists of original vector placeholders or free-licensed stock photography.',
           ],
         },
       ]}

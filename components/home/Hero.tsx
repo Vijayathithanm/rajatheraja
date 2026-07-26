@@ -94,10 +94,11 @@ export function Hero() {
         >
           <div className="relative overflow-hidden rounded-[2rem] border border-line bg-hover shadow-soft">
             <Media
-              src="/img/hero-portrait.svg"
+              src="/img/ilaiyaraaja-portrait-color.jpg"
+              fallbackSrc="/img/hero-portrait.svg"
               alt="Portrait of Isaignani Ilaiyaraaja"
-              width={900}
-              height={1200}
+              width={497}
+              height={960}
               priority
               className="h-auto w-full"
             />
