@@ -1,4 +1,5 @@
 import type { Slide, Stat, Post, NewsItem } from '@/lib/types';
+import { unsplash, PHOTO } from '@/lib/images';
 
 export const site = {
   name: 'Ilaiyaraaja',
@@ -100,7 +101,8 @@ export const slides: Slide[] = [
     tag: 'Upcoming Concert',
     title: 'Maestroverse World Tour',
     subtitle: 'A live symphonic journey through five decades of unforgettable melody.',
-    image: '/img/slide-concert.svg',
+    image: unsplash(PHOTO.orchestra, 1800, 1000),
+    fallback: '/img/slide-concert.svg',
     ctaLabel: 'View concerts',
     ctaHref: '/concerts',
   },
@@ -109,7 +111,8 @@ export const slides: Slide[] = [
     tag: 'Latest Album',
     title: 'New Symphonic Works',
     subtitle: 'Orchestral compositions blending Carnatic tradition with Western classical form.',
-    image: '/img/slide-album.svg',
+    image: unsplash(PHOTO.vinyl, 1800, 1000),
+    fallback: '/img/slide-album.svg',
     ctaLabel: 'Explore compositions',
     ctaHref: '/compositions?tab=Albums',
   },
@@ -118,7 +121,8 @@ export const slides: Slide[] = [
     tag: 'On Screen',
     title: 'The Latest Scores',
     subtitle: 'From intimate dramas to sweeping epics — the sound of Indian cinema.',
-    image: '/img/slide-movie.svg',
+    image: unsplash(PHOTO.stageLights, 1800, 1000),
+    fallback: '/img/slide-movie.svg',
     ctaLabel: 'Browse films',
     ctaHref: '/compositions?tab=Movies',
   },
@@ -127,7 +131,8 @@ export const slides: Slide[] = [
     tag: 'Honours',
     title: 'A Legacy of Recognition',
     subtitle: 'Padma Vibhushan, National Awards and a lifetime of global acclaim.',
-    image: '/img/slide-awards.svg',
+    image: unsplash(PHOTO.hall, 1800, 1000),
+    fallback: '/img/slide-awards.svg',
     ctaLabel: 'See awards',
     ctaHref: '/awards',
   },
@@ -136,7 +141,8 @@ export const slides: Slide[] = [
     tag: 'Life Journey',
     title: 'From Pannaipuram to the World',
     subtitle: 'The story of a self-made maestro who redefined Indian music.',
-    image: '/img/slide-journey.svg',
+    image: unsplash(PHOTO.crowd, 1800, 1000),
+    fallback: '/img/slide-journey.svg',
     ctaLabel: 'Read biography',
     ctaHref: '/biography',
   },
@@ -148,28 +154,32 @@ export const posts: Post[] = [
     category: 'Coming Soon',
     title: 'Releasing Soon',
     blurb: 'A new score, mixed and mastered, is on its way to the screen.',
-    image: '/img/post-comingsoon.svg',
+    image: unsplash(PHOTO.studio, 900, 700),
+    fallback: '/img/post-comingsoon.svg',
   },
   {
     id: 'p2',
     category: 'Maestroverse',
     title: 'Maestroverse Concerts',
     blurb: 'The Maestro takes the stage — a world tour of live orchestral concerts.',
-    image: '/img/post-maestroverse.svg',
+    image: unsplash(PHOTO.concert, 900, 700),
+    fallback: '/img/post-maestroverse.svg',
   },
   {
     id: 'p3',
     category: 'Live Concert',
     title: 'Live In Concert',
     blurb: 'Timeless melodies performed live with a full symphony orchestra.',
-    image: '/img/post-liveconcert.svg',
+    image: unsplash(PHOTO.crowd, 900, 700),
+    fallback: '/img/post-liveconcert.svg',
   },
   {
     id: 'p4',
     category: 'Studio Sessions',
     title: 'Live From Studio',
     blurb: 'Behind the console — a rare look inside the maestro’s recording sessions.',
-    image: '/img/post-studio.svg',
+    image: unsplash(PHOTO.stageLights, 900, 700),
+    fallback: '/img/post-studio.svg',
   },
 ];
 
@@ -181,7 +191,8 @@ export const news: NewsItem[] = [
     title: 'Ilaiyaraaja premieres new symphony with a European orchestra',
     excerpt:
       'The maestro conducts a full symphonic work — the latest chapter in a lifelong dialogue between Indian melody and Western classical form.',
-    image: '/img/news-1.svg',
+    image: unsplash(PHOTO.orchestra, 1000, 700),
+    fallback: '/img/news-1.svg',
     source: 'Press Release',
   },
   {
@@ -191,7 +202,8 @@ export const news: NewsItem[] = [
     title: 'Maestroverse tour adds new cities across three continents',
     excerpt:
       'Fresh dates have been announced for the acclaimed live concert series, bringing the orchestral experience to audiences worldwide.',
-    image: '/img/news-2.svg',
+    image: unsplash(PHOTO.concert2, 1000, 700),
+    fallback: '/img/news-2.svg',
     source: 'Tour Desk',
   },
   {
@@ -201,7 +213,8 @@ export const news: NewsItem[] = [
     title: 'A remastered anthology celebrates five decades of melody',
     excerpt:
       'Landmark compositions return in pristine sound, curated into a definitive anthology for a new generation of listeners.',
-    image: '/img/news-3.svg',
+    image: unsplash(PHOTO.vinyl, 1000, 700),
+    fallback: '/img/news-3.svg',
     source: 'Label',
   },
 ];

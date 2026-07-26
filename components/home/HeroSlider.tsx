@@ -47,7 +47,7 @@ export function HeroSlider() {
             {slides.map((s) => (
               <div className="embla__slide" key={s.id}>
                 <div className="relative aspect-[16/9] w-full sm:aspect-[16/7]">
-                  <Media src={s.image} alt={s.title} fill className="object-cover" sizes="100vw" />
+                  <Media src={s.image} fallbackSrc={s.fallback} alt={s.title} fill className="object-cover" sizes="100vw" />
                   <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/70 to-transparent" />
                   <div className="absolute inset-0 flex items-center">
                     <div className="container-page">

@@ -1,4 +1,5 @@
 import type { Concert } from '@/lib/types';
+import { unsplash, PHOTO } from '@/lib/images';
 
 /** Illustrative concert schedule (placeholder dates & venues). */
 export const concerts: Concert[] = [
@@ -12,7 +13,8 @@ export const concerts: Concert[] = [
     city: 'London',
     country: 'United Kingdom',
     bookingUrl: '#',
-    image: '/img/concert-london.svg',
+    image: unsplash(PHOTO.concert, 900, 600),
+    fallback: '/img/concert-london.svg',
   },
   {
     id: 'k2',
@@ -24,7 +26,8 @@ export const concerts: Concert[] = [
     city: 'Singapore',
     country: 'Singapore',
     bookingUrl: '#',
-    image: '/img/concert-singapore.svg',
+    image: unsplash(PHOTO.stageLights, 900, 600),
+    fallback: '/img/concert-singapore.svg',
   },
   {
     id: 'k3',
@@ -36,7 +39,8 @@ export const concerts: Concert[] = [
     city: 'Toronto',
     country: 'Canada',
     bookingUrl: '#',
-    image: '/img/concert-toronto.svg',
+    image: unsplash(PHOTO.concert2, 900, 600),
+    fallback: '/img/concert-toronto.svg',
   },
   {
     id: 'l1',
@@ -48,7 +52,8 @@ export const concerts: Concert[] = [
     city: 'Chennai',
     country: 'India',
     bookingUrl: '#',
-    image: '/img/concert-chennai.svg',
+    image: unsplash(PHOTO.crowd, 900, 600),
+    fallback: '/img/concert-chennai.svg',
   },
   {
     id: 'l2',
@@ -60,7 +65,8 @@ export const concerts: Concert[] = [
     city: 'Dubai',
     country: 'United Arab Emirates',
     bookingUrl: '#',
-    image: '/img/concert-dubai.svg',
+    image: unsplash(PHOTO.concert3, 900, 600),
+    fallback: '/img/concert-dubai.svg',
   },
   {
     id: 'l3',
@@ -72,6 +78,7 @@ export const concerts: Concert[] = [
     city: 'Sydney',
     country: 'Australia',
     bookingUrl: '#',
-    image: '/img/concert-sydney.svg',
+    image: unsplash(PHOTO.crowd2, 900, 600),
+    fallback: '/img/concert-sydney.svg',
   },
 ];

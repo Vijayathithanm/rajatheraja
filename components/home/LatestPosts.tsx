@@ -30,6 +30,7 @@ export function LatestPosts() {
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Media
                     src={p.image}
+                    fallbackSrc={p.fallback}
                     alt={p.title}
                     fill
                     className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"

@@ -45,6 +45,7 @@ export function GalleryMasonry() {
             <div className={cn('relative w-full', g.span === 'tall' ? 'aspect-[3/4]' : 'aspect-square')}>
               <Media
                 src={g.image}
+                fallbackSrc={g.fallback}
                 alt={g.title}
                 fill
                 className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
@@ -104,7 +105,7 @@ export function GalleryMasonry() {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="relative aspect-[4/3] w-full">
-                <Media src={items[active].image} alt={items[active].title} fill className="object-cover" sizes="80vw" />
+                <Media src={items[active].image} fallbackSrc={items[active].fallback} alt={items[active].title} fill className="object-cover" sizes="80vw" />
               </div>
               <figcaption className="flex items-center justify-between px-6 py-4">
                 <div>
