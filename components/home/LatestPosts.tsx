@@ -18,7 +18,7 @@ export function LatestPosts() {
         eyebrow="Latest"
         icon="Headphones"
         title="Latest Posts"
-        subtitle="Coming soon, Maestroverse, live concerts and studio sessions — the newest from the maestro’s world."
+        subtitle="Coming soon, Maestroverse, live concerts and studio sessions, the newest from the maestro’s world."
       />
       {isLoading || !posts ? (
         <CardGridSkeleton count={4} />

@@ -17,7 +17,7 @@ export default function ShopPage() {
         eyebrow="E-Shopping"
         icon="ShoppingBag"
         title="The Collection"
-        subtitle="Books, CDs, vinyl and merchandise — curated keepsakes for the connoisseur of great music."
+        subtitle="Books, CDs, vinyl and merchandise, curated keepsakes for the connoisseur of great music."
       />
       <Section>
         <ShopGrid />

@@ -5,7 +5,7 @@ import { QuizGame } from '@/components/quiz/QuizGame';
 
 export const metadata: Metadata = {
   title: 'Quiz',
-  description: 'Test your knowledge of Ilaiyaraaja with an interactive quiz — score points and climb the leaderboard.',
+  description: 'Test your knowledge of Ilaiyaraaja with an interactive quiz, score points and climb the leaderboard.',
   alternates: { canonical: '/quiz' },
 };
 

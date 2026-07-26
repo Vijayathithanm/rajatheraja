@@ -9,7 +9,7 @@ import { bioIntro } from '@/data/biography';
 export const metadata: Metadata = {
   title: 'Biography',
   description:
-    'The life and journey of Isaignani Ilaiyaraaja — from Pannaipuram to the Royal Philharmonic Orchestra. An interactive timeline of milestones.',
+    'The life and journey of Isaignani Ilaiyaraaja, from Pannaipuram to the Royal Philharmonic Orchestra. An interactive timeline of milestones.',
   alternates: { canonical: '/biography' },
 };
 
@@ -20,7 +20,7 @@ export default function BiographyPage() {
         eyebrow="Life Journey"
         icon="BookOpen"
         title="The Journey of a Maestro"
-        subtitle="Five decades of melody — from a rural childhood steeped in folk to the world’s great concert halls."
+        subtitle="Five decades of melody, from a rural childhood steeped in folk to the world’s great concert halls."
       />
 
       <Section className="pb-8">

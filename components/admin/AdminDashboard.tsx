@@ -163,7 +163,7 @@ export function AdminDashboard() {
         </span>
         <h2 className="font-display text-xl font-bold text-ink">Admin sign in</h2>
         <p className="mt-2 text-sm text-muted">
-          This is a demo dashboard. Enter any passphrase to continue — edits are saved to your browser only.
+          This is a demo dashboard. Enter any passphrase to continue, edits are saved to your browser only.
         </p>
         <form
           onSubmit={(e) => {

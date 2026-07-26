@@ -18,7 +18,7 @@ export function LatestNews() {
         eyebrow="Newsroom"
         icon="Radio"
         title="Latest News"
-        subtitle="Updates from concerts, releases and honours — refreshed from the press desk."
+        subtitle="Updates from concerts, releases and honours, refreshed from the press desk."
       />
 
       {isLoading || !news ? (

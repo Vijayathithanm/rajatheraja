@@ -8,7 +8,7 @@ import { CompositionsExplorer } from '@/components/compositions/CompositionsExpl
 export const metadata: Metadata = {
   title: 'Compositions',
   description:
-    'Explore the filmography and discography of Ilaiyaraaja — movies, albums, background scores, devotional and independent music. Filter, search and sort.',
+    'Explore the filmography and discography of Ilaiyaraaja, movies, albums, background scores, devotional and independent music. Filter, search and sort.',
   alternates: { canonical: '/compositions' },
 };
 

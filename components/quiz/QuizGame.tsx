@@ -122,8 +122,8 @@ export function QuizGame() {
                 {score === quiz.length
                   ? 'A true connoisseur of the maestro’s legacy!'
                   : score >= quiz.length / 2
-                    ? 'Well played — your ear for the maestro is sharp.'
-                    : 'A good start — explore the biography and try again!'}
+                    ? 'Well played, your ear for the maestro is sharp.'
+                    : 'A good start, explore the biography and try again!'}
               </p>
               <button onClick={restart} className="btn-outline mt-7">
                 <RotateCcw className="h-4 w-4" /> Play again
