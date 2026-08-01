@@ -120,9 +120,9 @@ export function QuizGame() {
               </h3>
               <p className="mt-3 text-muted">
                 {score === quiz.length
-                  ? 'A true connoisseur of the maestro’s legacy!'
+                  ? 'A true connoisseur of Ilaiyaraaja’s legacy!'
                   : score >= quiz.length / 2
-                    ? 'Well played, your ear for the maestro is sharp.'
+                    ? 'Well played, your ear for Ilaiyaraaja is sharp.'
                     : 'A good start, explore the biography and try again!'}
               </p>
               <button onClick={restart} className="btn-outline mt-7">

@@ -15,7 +15,7 @@ export default function QuizPage() {
       <PageHeader
         eyebrow="Interactive"
         icon="Music"
-        title="The Maestro Quiz"
+        title="The Ilaiyaraaja Quiz"
         subtitle="Six questions on the life and music of Ilaiyaraaja. How well do you know the legend?"
       />
       <Section>

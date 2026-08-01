@@ -30,7 +30,7 @@ export function Hero() {
             className="eyebrow"
           >
             <Equalizer className="h-4" />
-            The Maestro
+            Isaignani Ilaiyaraaja
           </motion.span>
 
           <motion.h1
@@ -62,7 +62,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.25 }}
             className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
           >
-            The maestro whose melodies scored a generation. Composer of more than a thousand films,
+            Ilaiyaraaja, whose melodies scored a generation. Composer of more than a thousand films,
             still shaping the sound of Indian music with a rare fusion of Carnatic tradition, Western
             classical form and Tamil folk.
           </motion.p>

@@ -2,7 +2,7 @@ import type { Product } from '@/lib/types';
 
 /** Placeholder merchandise, illustrative products only. */
 export const products: Product[] = [
-  { id: 'sp1', name: 'Ilaiyaraaja, The Maestro (Hardcover)', type: 'Books', price: 1499, currency: '₹', image: '/img/shop-book-1.svg', badge: 'Bestseller' },
+  { id: 'sp1', name: 'Ilaiyaraaja, A Musical Journey (Hardcover)', type: 'Books', price: 1499, currency: '₹', image: '/img/shop-book-1.svg', badge: 'Bestseller' },
   { id: 'sp2', name: 'A Life in Music, Illustrated Biography', type: 'Books', price: 1899, currency: '₹', image: '/img/shop-book-2.svg' },
   { id: 'sp3', name: 'Golden Melodies, Compact Disc', type: 'CD', price: 599, currency: '₹', image: '/img/shop-cd-1.svg' },
   { id: 'sp4', name: 'Symphonic Works, Compact Disc', type: 'CD', price: 649, currency: '₹', image: '/img/shop-cd-2.svg', badge: 'New' },

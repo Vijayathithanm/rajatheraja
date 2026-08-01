@@ -9,12 +9,12 @@ insert into public.slides (id, position, data) values
   ('s2', 1, '{"id":"s2","tag":"Latest Album","title":"New Symphonic Works","subtitle":"Orchestral compositions blending Carnatic tradition with Western classical form.","image":"https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?auto=format&fit=crop&w=1800&h=1000&q=80","fallback":"/img/slide-album.svg","ctaLabel":"Explore compositions","ctaHref":"/compositions?tab=Albums"}'::jsonb),
   ('s3', 2, '{"id":"s3","tag":"On Screen","title":"The Latest Scores","subtitle":"From intimate dramas to sweeping epics, the sound of Indian cinema.","image":"https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=1800&h=1000&q=80","fallback":"/img/slide-movie.svg","ctaLabel":"Browse films","ctaHref":"/compositions?tab=Movies"}'::jsonb),
   ('s4', 3, '{"id":"s4","tag":"Honours","title":"A Legacy of Recognition","subtitle":"Padma Vibhushan, National Awards and a lifetime of global acclaim.","image":"https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1800&h=1000&q=80","fallback":"/img/slide-awards.svg","ctaLabel":"See awards","ctaHref":"/awards"}'::jsonb),
-  ('s5', 4, '{"id":"s5","tag":"Life Journey","title":"From Pannaipuram to the World","subtitle":"The story of a self-made maestro who redefined Indian music.","image":"https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=1800&h=1000&q=80","fallback":"/img/slide-journey.svg","ctaLabel":"Read biography","ctaHref":"/biography"}'::jsonb)
+  ('s5', 4, '{"id":"s5","tag":"Life Journey","title":"From Pannaipuram to the World","subtitle":"The story of Ilaiyaraaja, who redefined Indian music.","image":"https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=1800&h=1000&q=80","fallback":"/img/slide-journey.svg","ctaLabel":"Read biography","ctaHref":"/biography"}'::jsonb)
 on conflict (id) do update set position = excluded.position, data = excluded.data, updated_at = now();
 
 -- news (3)
 insert into public.news (id, position, data) values
-  ('n1', 0, '{"id":"n1","date":"2026-06-18","kicker":"Symphony","title":"Ilaiyaraaja premieres new symphony with a European orchestra","excerpt":"The maestro conducts a full symphonic work, the latest chapter in a lifelong dialogue between Indian melody and Western classical form.","image":"https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1000&h=700&q=80","fallback":"/img/news-1.svg","source":"Press Release"}'::jsonb),
+  ('n1', 0, '{"id":"n1","date":"2026-06-18","kicker":"Symphony","title":"Ilaiyaraaja premieres new symphony with a European orchestra","excerpt":"Ilaiyaraaja conducts a full symphonic work, the latest chapter in a lifelong dialogue between Indian melody and Western classical form.","image":"https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1000&h=700&q=80","fallback":"/img/news-1.svg","source":"Press Release"}'::jsonb),
   ('n2', 1, '{"id":"n2","date":"2026-05-02","kicker":"World Tour","title":"World tour adds new cities across three continents","excerpt":"Fresh dates have been announced for the acclaimed live concert series, bringing the orchestral experience to audiences worldwide.","image":"https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1000&h=700&q=80","fallback":"/img/news-2.svg","source":"Tour Desk"}'::jsonb),
   ('n3', 2, '{"id":"n3","date":"2026-03-14","kicker":"New Release","title":"A remastered anthology celebrates five decades of melody","excerpt":"Landmark compositions return in pristine sound, curated into a definitive anthology for a new generation of listeners.","image":"https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?auto=format&fit=crop&w=1000&h=700&q=80","fallback":"/img/news-3.svg","source":"Label"}'::jsonb)
 on conflict (id) do update set position = excluded.position, data = excluded.data, updated_at = now();
@@ -22,9 +22,9 @@ on conflict (id) do update set position = excluded.position, data = excluded.dat
 -- posts (4)
 insert into public.posts (id, position, data) values
   ('p1', 0, '{"id":"p1","category":"Coming Soon","title":"Releasing Soon","blurb":"A new score, mixed and mastered, is on its way to the screen.","image":"https://images.unsplash.com/photo-1507838153414-b4b713384a76?auto=format&fit=crop&w=900&h=700&q=80","fallback":"/img/post-comingsoon.svg"}'::jsonb),
-  ('p2', 1, '{"id":"p2","category":"World Tour","title":"On Tour Worldwide","blurb":"The Maestro takes the stage, a world tour of live orchestral concerts.","image":"https://images.unsplash.com/photo-1487215078519-e21cc028cb29?auto=format&fit=crop&w=900&h=700&q=80","fallback":"/img/post-maestroverse.svg"}'::jsonb),
+  ('p2', 1, '{"id":"p2","category":"World Tour","title":"On Tour Worldwide","blurb":"Ilaiyaraaja takes the stage, a world tour of live orchestral concerts.","image":"https://images.unsplash.com/photo-1487215078519-e21cc028cb29?auto=format&fit=crop&w=900&h=700&q=80","fallback":"/img/post-maestroverse.svg"}'::jsonb),
   ('p3', 2, '{"id":"p3","category":"Live Concert","title":"Live In Concert","blurb":"Timeless melodies performed live with a full symphony orchestra.","image":"https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=900&h=700&q=80","fallback":"/img/post-liveconcert.svg"}'::jsonb),
-  ('p4', 3, '{"id":"p4","category":"Studio Sessions","title":"Live From Studio","blurb":"Behind the console, a rare look inside the maestro’s recording sessions.","image":"https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=900&h=700&q=80","fallback":"/img/post-studio.svg"}'::jsonb)
+  ('p4', 3, '{"id":"p4","category":"Studio Sessions","title":"Live From Studio","blurb":"Behind the console, a rare look inside Ilaiyaraaja’s recording sessions.","image":"https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=900&h=700&q=80","fallback":"/img/post-studio.svg"}'::jsonb)
 on conflict (id) do update set position = excluded.position, data = excluded.data, updated_at = now();
 
 -- concerts (6)
@@ -61,7 +61,7 @@ on conflict (id) do update set position = excluded.position, data = excluded.dat
 
 -- products (9)
 insert into public.products (id, position, data) values
-  ('sp1', 0, '{"id":"sp1","name":"Ilaiyaraaja, The Maestro (Hardcover)","type":"Books","price":1499,"currency":"₹","image":"/img/shop-book-1.svg","badge":"Bestseller"}'::jsonb),
+  ('sp1', 0, '{"id":"sp1","name":"Ilaiyaraaja, A Musical Journey (Hardcover)","type":"Books","price":1499,"currency":"₹","image":"/img/shop-book-1.svg","badge":"Bestseller"}'::jsonb),
   ('sp2', 1, '{"id":"sp2","name":"A Life in Music, Illustrated Biography","type":"Books","price":1899,"currency":"₹","image":"/img/shop-book-2.svg"}'::jsonb),
   ('sp3', 2, '{"id":"sp3","name":"Golden Melodies, Compact Disc","type":"CD","price":599,"currency":"₹","image":"/img/shop-cd-1.svg"}'::jsonb),
   ('sp4', 3, '{"id":"sp4","name":"Symphonic Works, Compact Disc","type":"CD","price":649,"currency":"₹","image":"/img/shop-cd-2.svg","badge":"New"}'::jsonb),
@@ -74,7 +74,7 @@ on conflict (id) do update set position = excluded.position, data = excluded.dat
 
 -- gallery (11)
 insert into public.gallery (id, position, data) values
-  ('p1', 0, '{"id":"p1","title":"Isaignani","caption":"The maestro, in portrait","image":"/img/ilaiyaraaja-portrait-color.jpg","fallback":"/img/hero-portrait.svg","span":"tall"}'::jsonb),
+  ('p1', 0, '{"id":"p1","title":"Isaignani","caption":"Ilaiyaraaja, in portrait","image":"/img/ilaiyaraaja-portrait-color.jpg","fallback":"/img/hero-portrait.svg","span":"tall"}'::jsonb),
   ('p2', 1, '{"id":"p2","title":"The Composer","caption":"A moment of music","image":"/img/ilaiyaraaja-portrait-bw.jpg","fallback":"/img/bio-portrait.svg","span":"normal"}'::jsonb),
   ('g1', 2, '{"id":"g1","title":"At the Podium","caption":"Conducting a live orchestra","image":"https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&h=800&q=80","fallback":"/img/gallery-1.svg","span":"normal"}'::jsonb),
   ('g2', 3, '{"id":"g2","title":"In the Studio","caption":"Behind the mixing console","image":"https://images.unsplash.com/photo-1507838153414-b4b713384a76?auto=format&fit=crop&w=800&h=800&q=80","fallback":"/img/gallery-2.svg","span":"normal"}'::jsonb),
