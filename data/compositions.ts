@@ -155,18 +155,6 @@ export const compositions: Composition[] = [
     poster: '/img/poster-pithamagan.svg',
   },
   {
-    id: 'c13',
-    title: 'Raam',
-    year: 2005,
-    language: 'Tamil',
-    director: 'Ameer',
-    label: 'Star Music',
-    genre: 'Drama',
-    songs: 5,
-    category: 'Movies',
-    poster: '/img/poster-ram.svg',
-  },
-  {
     id: 'a1',
     title: 'How To Name It?',
     year: 1986,

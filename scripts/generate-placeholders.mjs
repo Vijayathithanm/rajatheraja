@@ -190,7 +190,6 @@ const posters = [
   ['poster-thiruvasagam.svg', 'Thiruvasagam', '2005'],
   ['poster-guru.svg', 'Guru', '1997'],
   ['poster-pithamagan.svg', 'Pithamagan', '2003'],
-  ['poster-ram.svg', 'Raam', '2005'],
 ];
 posters.forEach(([f, t, y]) => poster(f, t, y));
 

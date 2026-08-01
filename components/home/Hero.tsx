@@ -30,7 +30,7 @@ export function Hero() {
             className="eyebrow"
           >
             <Equalizer className="h-4" />
-            Isaignani · The Maestro
+            The Maestro
           </motion.span>
 
           <motion.h1
