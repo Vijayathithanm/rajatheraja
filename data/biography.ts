@@ -5,7 +5,7 @@ export const bioIntro = {
   lead:
     'Born in 1943 in Pannaipuram, Tamil Nadu, Ilaiyaraaja transformed Indian film music by fusing Western classical counterpoint, Carnatic tradition and Tamil folk into a wholly original voice. Across five decades and thousands of songs, he has remained the standard against which film composers are measured.',
   body: [
-    'Honoured with the title “Isaignani” (the wise man of music) and often called “The Maestro”, he became the first Asian to compose a full symphony performed by the Royal Philharmonic Orchestra in London.',
+    'Honoured with the title “Isaignani” (the wise man of music), Ilaiyaraaja became the first Asian to compose a full symphony performed by the Royal Philharmonic Orchestra in London.',
     'His work moves effortlessly between the intimate and the epic, a single melody line that can carry a village folk song or an entire orchestral movement. He is celebrated not only as a composer, but as a singer, lyricist, conductor and producer.',
   ],
 };
@@ -53,7 +53,7 @@ export const timeline: TimelineEvent[] = [
     phase: 'Milestones',
     title: 'The golden decade',
     description:
-      'A staggering run of landmark scores across Tamil, Telugu, Malayalam, Kannada and Hindi cinema established him as the maestro.',
+      'A staggering run of landmark scores across Tamil, Telugu, Malayalam, Kannada and Hindi cinema established Ilaiyaraaja as a national phenomenon.',
   },
   {
     id: 't6',

@@ -164,7 +164,7 @@ function product(name, label, type, w = 700, h = 700) {
 
 /* ═══════════════════════ Generate ═══════════════════════════ */
 portrait('hero-portrait.svg');
-portrait('bio-portrait.svg', 900, 1100, 'THE MAESTRO');
+portrait('bio-portrait.svg', 900, 1100, 'ILAIYARAAJA');
 
 // Slides
 banner('slide-concert.svg', 'Maestroverse');

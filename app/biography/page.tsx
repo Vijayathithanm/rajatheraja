@@ -19,7 +19,7 @@ export default function BiographyPage() {
       <PageHeader
         eyebrow="Life Journey"
         icon="BookOpen"
-        title="The Journey of a Maestro"
+        title="The Journey of Ilaiyaraaja"
         subtitle="Five decades of melody, from a rural childhood steeped in folk to the world’s great concert halls."
       />
 
@@ -38,7 +38,7 @@ export default function BiographyPage() {
                 />
               </div>
               <span className="mt-4 block text-center text-xs font-semibold uppercase tracking-widest2 text-gold">
-                Isaignani · The Maestro
+                Ilaiyaraaja
               </span>
             </div>
           </Reveal>

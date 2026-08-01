@@ -8,7 +8,7 @@ import { unsplash, PHOTO } from '@/lib/images';
  * design (no stranger's face is presented as the artist).
  */
 export const gallery: GalleryItem[] = [
-  { id: 'p1', title: 'Isaignani', caption: 'The maestro, in portrait', image: '/img/ilaiyaraaja-portrait-color.jpg', fallback: '/img/hero-portrait.svg', span: 'tall' },
+  { id: 'p1', title: 'Isaignani', caption: 'Ilaiyaraaja, in portrait', image: '/img/ilaiyaraaja-portrait-color.jpg', fallback: '/img/hero-portrait.svg', span: 'tall' },
   { id: 'p2', title: 'The Composer', caption: 'A moment of music', image: '/img/ilaiyaraaja-portrait-bw.jpg', fallback: '/img/bio-portrait.svg', span: 'normal' },
   { id: 'g1', title: 'At the Podium', caption: 'Conducting a live orchestra', image: unsplash(PHOTO.orchestra, 800, 800), fallback: '/img/gallery-1.svg', span: 'normal' },
   { id: 'g2', title: 'In the Studio', caption: 'Behind the mixing console', image: unsplash(PHOTO.studio, 800, 800), fallback: '/img/gallery-2.svg', span: 'normal' },
