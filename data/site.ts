@@ -37,14 +37,7 @@ export const nav: NavItem[] = [
       { label: 'Devotional', href: '/compositions?tab=Devotional' },
     ],
   },
-  {
-    label: 'Concerts',
-    href: '/concerts',
-    children: [
-      { label: 'Maestroverse', href: '/concerts?series=Maestroverse' },
-      { label: 'Live In Concert', href: '/concerts?series=Live+In+Concert' },
-    ],
-  },
+  { label: 'Concerts', href: '/concerts' },
   { label: 'Awards', href: '/awards' },
   { label: 'Shop', href: '/shop' },
   {
@@ -76,7 +69,7 @@ export const footer = {
   },
   quickLinks: [
     { label: 'Biography', href: '/biography' },
-    { label: 'Maestroverse', href: '/concerts?series=Maestroverse' },
+    { label: 'Concerts', href: '/concerts' },
     { label: 'Awards', href: '/awards' },
     { label: 'Compositions', href: '/compositions' },
   ],
@@ -99,7 +92,7 @@ export const slides: Slide[] = [
   {
     id: 's1',
     tag: 'Upcoming Concert',
-    title: 'Maestroverse World Tour',
+    title: 'Live In Concert World Tour',
     subtitle: 'A live symphonic journey through five decades of unforgettable melody.',
     image: unsplash(PHOTO.orchestra, 1800, 1000),
     fallback: '/img/slide-concert.svg',
@@ -159,8 +152,8 @@ export const posts: Post[] = [
   },
   {
     id: 'p2',
-    category: 'Maestroverse',
-    title: 'Maestroverse Concerts',
+    category: 'World Tour',
+    title: 'On Tour Worldwide',
     blurb: 'The Maestro takes the stage, a world tour of live orchestral concerts.',
     image: unsplash(PHOTO.concert, 900, 700),
     fallback: '/img/post-maestroverse.svg',
@@ -199,7 +192,7 @@ export const news: NewsItem[] = [
     id: 'n2',
     date: '2026-05-02',
     kicker: 'World Tour',
-    title: 'Maestroverse tour adds new cities across three continents',
+    title: 'World tour adds new cities across three continents',
     excerpt:
       'Fresh dates have been announced for the acclaimed live concert series, bringing the orchestral experience to audiences worldwide.',
     image: unsplash(PHOTO.concert2, 1000, 700),

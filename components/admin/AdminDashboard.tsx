@@ -65,7 +65,7 @@ const configs: (CollectionConfig & { icon: string })[] = [
     titleField: 'title',
     fields: [
       { name: 'title', label: 'Title' },
-      { name: 'series', label: 'Series', type: 'select', options: ['Maestroverse', 'Live In Concert'] },
+      { name: 'series', label: 'Series', type: 'select', options: ['Live In Concert'] },
       { name: 'status', label: 'Status', type: 'select', options: ['Upcoming', 'Completed'] },
       { name: 'date', label: 'Date (YYYY-MM-DD)' },
       { name: 'venue', label: 'Venue' },

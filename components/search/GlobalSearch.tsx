@@ -101,7 +101,7 @@ export function GlobalSearch({ open, onClose }: { open: boolean; onClose: () => 
               )}
               {!loading && !query && (
                 <p className="px-4 py-6 text-sm text-muted">
-                  Try “Nayakan”, “Maestroverse” or “Padma”.
+                  Try “Nayakan”, “Thalapathi” or “Padma”.
                 </p>
               )}
               <ul>

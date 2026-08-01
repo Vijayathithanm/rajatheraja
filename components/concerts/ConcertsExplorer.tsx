@@ -1,7 +1,6 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { MapPin, CalendarDays, Ticket, Globe } from 'lucide-react';
 import { Media } from '@/components/ui/Media';
@@ -9,45 +8,22 @@ import { Skeleton } from '@/components/ui/Skeleton';
 import { RevealGroup, RevealItem } from '@/components/ui/Reveal';
 import { getConcerts } from '@/lib/services';
 import { cn, formatDate } from '@/lib/utils';
-import type { ConcertSeries, ConcertStatus } from '@/lib/types';
+import type { ConcertStatus } from '@/lib/types';
 
-const SERIES: ConcertSeries[] = ['Maestroverse', 'Live In Concert'];
 const STATUS: ConcertStatus[] = ['Upcoming', 'Completed'];
 
 export function ConcertsExplorer() {
-  const params = useSearchParams();
-  const initialSeries = (params.get('series') as ConcertSeries) ?? 'Maestroverse';
-
   const { data, isLoading } = useQuery({ queryKey: ['concerts'], queryFn: getConcerts });
-  const [series, setSeries] = useState<ConcertSeries>(
-    SERIES.includes(initialSeries) ? initialSeries : 'Maestroverse',
-  );
   const [status, setStatus] = useState<ConcertStatus | 'All'>('All');
 
   const list = useMemo(() => {
-    let l = (data ?? []).filter((c) => c.series === series);
+    let l = data ?? [];
     if (status !== 'All') l = l.filter((c) => c.status === status);
-    return l.sort((a, b) => +new Date(b.date) - +new Date(a.date));
-  }, [data, series, status]);
+    return [...l].sort((a, b) => +new Date(b.date) - +new Date(a.date));
+  }, [data, status]);
 
   return (
     <div>
-      {/* Series tabs */}
-      <div className="mb-6 flex flex-wrap justify-center gap-2">
-        {SERIES.map((s) => (
-          <button
-            key={s}
-            onClick={() => setSeries(s)}
-            className={cn(
-              'rounded-full border px-5 py-2.5 text-sm font-semibold transition-all',
-              series === s ? 'border-ink bg-ink text-white' : 'border-line text-muted hover:border-gold hover:text-gold',
-            )}
-          >
-            {s}
-          </button>
-        ))}
-      </div>
-
       {/* Status filter */}
       <div className="mb-10 flex flex-wrap justify-center gap-2">
         {(['All', ...STATUS] as const).map((s) => (
@@ -71,9 +47,9 @@ export function ConcertsExplorer() {
           ))}
         </div>
       ) : list.length === 0 ? (
-        <p className="py-16 text-center text-muted">No {status !== 'All' ? status.toLowerCase() : ''} concerts in this series yet.</p>
+        <p className="py-16 text-center text-muted">No {status !== 'All' ? status.toLowerCase() : ''} concerts to show yet.</p>
       ) : (
-        <RevealGroup key={`${series}|${status}`} className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <RevealGroup key={status} className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {list.map((c) => (
             <RevealItem key={c.id}>
               <article className="card card-hover group flex h-full flex-col overflow-hidden sm:flex-row">
