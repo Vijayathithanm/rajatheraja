@@ -8,7 +8,7 @@ import { ConcertsExplorer } from '@/components/concerts/ConcertsExplorer';
 export const metadata: Metadata = {
   title: 'Concerts',
   description:
-    'Maestroverse and Live In Concert, upcoming and past performances of Ilaiyaraaja around the world, with venues, cities and booking links.',
+    'Live In Concert, upcoming and past performances of Ilaiyaraaja around the world, with venues, cities and booking links.',
   alternates: { canonical: '/concerts' },
 };
 

@@ -27,7 +27,7 @@ export interface Composition {
 }
 
 export type ConcertStatus = 'Upcoming' | 'Completed';
-export type ConcertSeries = 'Maestroverse' | 'Live In Concert';
+export type ConcertSeries = 'Live In Concert';
 
 export interface Concert {
   id: string;
