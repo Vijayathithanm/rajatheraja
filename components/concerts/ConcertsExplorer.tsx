@@ -73,7 +73,7 @@ export function ConcertsExplorer() {
       ) : list.length === 0 ? (
         <p className="py-16 text-center text-muted">No {status !== 'All' ? status.toLowerCase() : ''} concerts in this series yet.</p>
       ) : (
-        <RevealGroup className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <RevealGroup key={`${series}|${status}`} className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {list.map((c) => (
             <RevealItem key={c.id}>
               <article className="card card-hover group flex h-full flex-col overflow-hidden sm:flex-row">
