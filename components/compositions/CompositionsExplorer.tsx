@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
-import { Search, ChevronLeft, ChevronRight, Film, Calendar, Languages, User, Tag, Disc } from 'lucide-react';
+import { Search, ChevronLeft, ChevronRight, Film, Calendar, Languages, User, Tag } from 'lucide-react';
 import { Media } from '@/components/ui/Media';
 import { CardGridSkeleton } from '@/components/ui/Skeleton';
 import { RevealGroup, RevealItem } from '@/components/ui/Reveal';
@@ -123,7 +123,7 @@ export function CompositionsExplorer() {
       ) : pageItems.length === 0 ? (
         <p className="py-16 text-center text-muted">No compositions match your search.</p>
       ) : (
-        <RevealGroup className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <RevealGroup key={`${tab}|${current}|${sort}`} className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {pageItems.map((c) => (
             <RevealItem key={c.id}>
               <article className="card card-hover group flex h-full flex-col overflow-hidden">
@@ -147,7 +147,6 @@ export function CompositionsExplorer() {
                     <Meta icon={<Calendar className="h-3.5 w-3.5" />} label={`${c.year}`} />
                     <Meta icon={<Languages className="h-3.5 w-3.5" />} label={c.language} />
                     <Meta icon={<User className="h-3.5 w-3.5" />} label={c.director} />
-                    <Meta icon={<Disc className="h-3.5 w-3.5" />} label={c.label} />
                     <Meta icon={<Tag className="h-3.5 w-3.5" />} label={c.genre} />
                     <Meta icon={<Film className="h-3.5 w-3.5" />} label={c.songs ? `${c.songs} songs` : 'Score'} />
                   </dl>
