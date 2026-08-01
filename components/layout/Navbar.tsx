@@ -4,10 +4,10 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Search, Menu, X, ChevronDown, Music4 } from 'lucide-react';
+import { Search, Menu, X, ChevronDown, Music4, ShoppingBag } from 'lucide-react';
 import { nav } from '@/data/site';
 import { cn } from '@/lib/utils';
-import { useScrolled } from '@/lib/hooks';
+import { useScrolled, useCart } from '@/lib/hooks';
 import { GlobalSearch } from '@/components/search/GlobalSearch';
 
 export function Navbar() {
@@ -16,6 +16,7 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const { count } = useCart();
 
   const isActive = (href: string) => {
     const base = href.split('?')[0];
@@ -99,6 +100,18 @@ export function Navbar() {
             >
               <Search className="h-5 w-5" strokeWidth={1.75} />
             </button>
+            <Link
+              href="/checkout"
+              aria-label={`Checkout${count ? `, ${count} items` : ''}`}
+              className="relative flex h-10 w-10 items-center justify-center rounded-full text-ink transition-colors hover:bg-hover hover:text-gold"
+            >
+              <ShoppingBag className="h-5 w-5" strokeWidth={1.75} />
+              {count > 0 && (
+                <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-gold px-1 text-[0.6rem] font-bold text-white">
+                  {count}
+                </span>
+              )}
+            </Link>
             <button
               onClick={() => setMobileOpen(true)}
               aria-label="Open menu"

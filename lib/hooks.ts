@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { getCart, cartCount, cartSubtotal, type CartItem } from '@/lib/cart';
 
 /** Count from 0 → target once the element scrolls into view. */
 export function useCountUp(target: number, duration = 1600) {
@@ -68,6 +69,26 @@ export function useScrolled(threshold = 12) {
     return () => window.removeEventListener('scroll', onScroll);
   }, [threshold]);
   return scrolled;
+}
+
+/** Live view of the shopping cart, kept in sync across pages. */
+export function useCart() {
+  const [items, setItems] = useState<CartItem[]>([]);
+  useEffect(() => {
+    const sync = () => setItems(getCart());
+    sync();
+    window.addEventListener('cart:update', sync);
+    window.addEventListener('storage', sync);
+    return () => {
+      window.removeEventListener('cart:update', sync);
+      window.removeEventListener('storage', sync);
+    };
+  }, []);
+  return {
+    items,
+    count: cartCount(items),
+    subtotal: cartSubtotal(items),
+  };
 }
 
 /** Re-render subscribers when the localStorage-backed CMS changes. */
