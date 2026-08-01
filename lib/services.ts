@@ -1,12 +1,13 @@
 /**
  * services/ — the data-access layer.
  *
- * The site is a fully static export (GitHub Pages), so there is no server.
- * These async functions stand in for API calls: they read from the bundled
- * mock data (merged with any admin overrides saved in localStorage) and return
- * Promises, so components can consume them through React Query exactly as they
- * would a real REST/GraphQL backend. Swap the bodies for `fetch()` calls to a
- * live API without touching the components.
+ * The site is a static export (GitHub Pages) with no server of its own.
+ * Reads go through Supabase when it is configured (see lib/supabase.ts); the
+ * browser fetches directly from Postgres via the public anon key + RLS. When
+ * Supabase is not configured — or a request fails — we transparently fall back
+ * to the bundled mock data (merged with any local admin overrides). Components
+ * consume these functions through React Query and never need to know which
+ * source answered.
  */
 import { compositions as seedCompositions } from '@/data/compositions';
 import { concerts as seedConcerts } from '@/data/concerts';
@@ -16,6 +17,7 @@ import { gallery as seedGallery } from '@/data/gallery';
 import { news as seedNews, posts as seedPosts, slides as seedSlides } from '@/data/site';
 import { delay } from '@/lib/utils';
 import { readCollection } from '@/lib/cms';
+import { fetchCollection } from '@/lib/db';
 import type {
   Composition,
   Concert,
@@ -27,22 +29,28 @@ import type {
   Slide,
 } from '@/lib/types';
 
-export const getCompositions = () =>
-  delay(readCollection<Composition>('compositions', seedCompositions));
+/** Prefer the database; fall back to bundled mock data (+ local overrides). */
+async function load<T>(table: string, seed: T[]): Promise<T[]> {
+  const remote = await fetchCollection<T>(table);
+  const list = remote && remote.length ? remote : readCollection<T>(table, seed);
+  return delay(list);
+}
 
-export const getConcerts = () => delay(readCollection<Concert>('concerts', seedConcerts));
+export const getCompositions = () => load<Composition>('compositions', seedCompositions);
 
-export const getAwards = () => delay(readCollection<Award>('awards', seedAwards));
+export const getConcerts = () => load<Concert>('concerts', seedConcerts);
 
-export const getProducts = () => delay(readCollection<Product>('products', seedProducts));
+export const getAwards = () => load<Award>('awards', seedAwards);
 
-export const getGallery = () => delay(readCollection<GalleryItem>('gallery', seedGallery));
+export const getProducts = () => load<Product>('products', seedProducts);
 
-export const getNews = () => delay(readCollection<NewsItem>('news', seedNews));
+export const getGallery = () => load<GalleryItem>('gallery', seedGallery);
 
-export const getPosts = () => delay(readCollection<Post>('posts', seedPosts));
+export const getNews = () => load<NewsItem>('news', seedNews);
 
-export const getSlides = () => delay(readCollection<Slide>('slides', seedSlides));
+export const getPosts = () => load<Post>('posts', seedPosts);
+
+export const getSlides = () => load<Slide>('slides', seedSlides);
 
 /** Global search across the searchable collections. */
 export interface SearchResult {

@@ -110,6 +110,40 @@ production-shaped architecture:
 - `lib/cms.ts` merges any **Admin dashboard** edits (saved to `localStorage`) on top of
   the seed data, so admin changes appear instantly across the site.
 
+## 🗄️ Connect a database (Supabase)
+
+The site reads content from **Supabase** (hosted Postgres) when it is configured, and
+falls back to the bundled data otherwise — so it works with or without a database. The
+browser reads directly from Postgres using the public **anon key**, protected by
+**Row-Level Security** (RLS), which suits the static GitHub Pages hosting (no server
+required).
+
+**One-time setup**
+
+1. Create a free project at [supabase.com](https://supabase.com).
+2. In the dashboard, open **SQL → New query** and run:
+   - `supabase/schema.sql` — creates the tables + RLS (public read, authenticated write).
+   - `supabase/seed.sql` — loads the current content. *(Regenerate it any time the
+     bundled data changes: `npm run build` then `node scripts/gen-seed.mjs`, using a
+     temporary `app/seedexport/route.ts` that returns the data as JSON.)*
+3. Grab **Project URL** and **anon public key** from **Settings → API**.
+4. Provide them to the build:
+   - **Local:** copy `.env.example` → `.env.local` and fill them in.
+   - **GitHub Pages:** add them as repository **Variables** (Settings → Secrets and
+     variables → Actions → **Variables**) named exactly `NEXT_PUBLIC_SUPABASE_URL` and
+     `NEXT_PUBLIC_SUPABASE_ANON_KEY`. The deploy workflow already passes them through.
+5. Push to `main`. The live site now serves content from your database.
+
+Data model: every collection is one table (`slides`, `news`, `posts`, `concerts`,
+`compositions`, `products`, `gallery`, `quiz`, `awards`) with columns
+`id text, position int, data jsonb, updated_at` — `data` holds the full record, so it
+maps 1:1 to the app's TypeScript types. Reads live in `lib/db.ts` + `lib/services.ts`.
+
+> **Writes / Admin:** the Admin dashboard currently saves to `localStorage` (per-browser).
+> To make admin edits write to Supabase for everyone, enable **Supabase Auth** (create an
+> admin user), then log in from the dashboard — the RLS policies already allow writes for
+> authenticated users. This wiring is the natural next step.
+
 ## 🔐 Admin Dashboard
 
 Visit **`/admin`**, enter any passphrase (demo gate), and manage every collection.
