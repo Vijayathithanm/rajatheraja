@@ -40,7 +40,6 @@ export function Navbar() {
             </span>
             <span className="flex flex-col leading-none">
               <span className="font-display text-lg font-bold tracking-tight text-ink">Ilaiyaraaja</span>
-              <span className="text-[0.6rem] font-semibold uppercase tracking-widest2 text-gold">Isaignani</span>
             </span>
           </Link>
 
