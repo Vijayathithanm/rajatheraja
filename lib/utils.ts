@@ -30,3 +30,8 @@ export function formatPrice(value: number, currency = '₹') {
 export function delay<T>(value: T, ms = 350): Promise<T> {
   return new Promise((resolve) => setTimeout(() => resolve(value), ms));
 }
+
+/** A live YouTube search URL for the given query. */
+export function youtubeSearchUrl(query: string) {
+  return `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
+}
