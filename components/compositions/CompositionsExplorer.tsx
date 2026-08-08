@@ -3,12 +3,12 @@
 import { useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
-import { Search, ChevronLeft, ChevronRight, Film, Calendar, Languages, User, Tag } from 'lucide-react';
+import { Search, ChevronLeft, ChevronRight, Film, Calendar, Languages, User, Tag, Play, ExternalLink } from 'lucide-react';
 import { Media } from '@/components/ui/Media';
 import { CardGridSkeleton } from '@/components/ui/Skeleton';
 import { RevealGroup, RevealItem } from '@/components/ui/Reveal';
 import { getCompositions } from '@/lib/services';
-import { cn } from '@/lib/utils';
+import { cn, youtubeSearchUrl } from '@/lib/utils';
 import type { Composition, CompositionCategory } from '@/lib/types';
 
 const TABS: (CompositionCategory | 'All')[] = [
@@ -124,36 +124,57 @@ export function CompositionsExplorer() {
         <p className="py-16 text-center text-muted">No compositions match your search.</p>
       ) : (
         <RevealGroup key={`${tab}|${current}|${sort}`} className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {pageItems.map((c) => (
-            <RevealItem key={c.id}>
-              <article className="card card-hover group flex h-full flex-col overflow-hidden">
-                <div className="relative aspect-[3/4] overflow-hidden bg-hover">
-                  <Media
-                    src={c.poster}
-                    alt={`${c.title} poster`}
-                    fill
-                    className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
-                    sizes="(max-width:640px) 100vw, 33vw"
-                  />
-                  <span className="absolute left-3 top-3 rounded-full bg-paper/90 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-widest2 text-ink backdrop-blur">
-                    {c.category === 'Albums' ? 'Album' : c.category === 'Movies' ? 'Film' : c.category}
-                  </span>
-                </div>
-                <div className="flex flex-1 flex-col p-5">
-                  <div className="flex items-center justify-between gap-2">
-                    <h3 className="font-display text-lg font-bold leading-tight text-ink">{c.title}</h3>
+          {pageItems.map((c) => {
+            const href = c.link || youtubeSearchUrl(`${c.title} ${c.year} Ilaiyaraaja songs`);
+            return (
+              <RevealItem key={c.id}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Listen to ${c.title} (opens in a new tab)`}
+                  className="card card-hover group flex h-full flex-col overflow-hidden"
+                >
+                  <div className="relative aspect-[3/4] overflow-hidden bg-hover">
+                    <Media
+                      src={c.poster}
+                      alt={`${c.title} poster`}
+                      fill
+                      className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
+                      sizes="(max-width:640px) 100vw, 33vw"
+                    />
+                    <span className="absolute left-3 top-3 rounded-full bg-paper/90 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-widest2 text-ink backdrop-blur">
+                      {c.category === 'Albums' ? 'Album' : c.category === 'Movies' ? 'Film' : c.category}
+                    </span>
+                    {/* Play overlay on hover */}
+                    <span className="absolute inset-0 flex items-center justify-center bg-ink/25 opacity-0 backdrop-blur-[1px] transition-opacity duration-300 group-hover:opacity-100">
+                      <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/95 text-ink shadow-lift transition-transform duration-300 group-hover:scale-105">
+                        <Play className="ml-0.5 h-6 w-6 fill-current" />
+                      </span>
+                    </span>
                   </div>
-                  <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-xs text-muted">
-                    <Meta icon={<Calendar className="h-3.5 w-3.5" />} label={`${c.year}`} />
-                    <Meta icon={<Languages className="h-3.5 w-3.5" />} label={c.language} />
-                    <Meta icon={<User className="h-3.5 w-3.5" />} label={c.director} />
-                    <Meta icon={<Tag className="h-3.5 w-3.5" />} label={c.genre} />
-                    <Meta icon={<Film className="h-3.5 w-3.5" />} label={c.songs ? `${c.songs} songs` : 'Score'} />
-                  </dl>
-                </div>
-              </article>
-            </RevealItem>
-          ))}
+                  <div className="flex flex-1 flex-col p-5">
+                    <div className="flex items-start justify-between gap-2">
+                      <h3 className="font-display text-lg font-bold leading-tight text-ink group-hover:text-gold">
+                        {c.title}
+                      </h3>
+                      <ExternalLink className="mt-1 h-4 w-4 shrink-0 text-faint transition-colors group-hover:text-gold" />
+                    </div>
+                    <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-xs text-muted">
+                      <Meta icon={<Calendar className="h-3.5 w-3.5" />} label={`${c.year}`} />
+                      <Meta icon={<Languages className="h-3.5 w-3.5" />} label={c.language} />
+                      <Meta icon={<User className="h-3.5 w-3.5" />} label={c.director} />
+                      <Meta icon={<Tag className="h-3.5 w-3.5" />} label={c.genre} />
+                      <Meta icon={<Film className="h-3.5 w-3.5" />} label={c.songs ? `${c.songs} songs` : 'Score'} />
+                    </dl>
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest2 text-gold">
+                      <Play className="h-3.5 w-3.5 fill-current" /> Listen
+                    </span>
+                  </div>
+                </a>
+              </RevealItem>
+            );
+          })}
         </RevealGroup>
       )}
 

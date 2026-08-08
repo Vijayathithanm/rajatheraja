@@ -24,6 +24,9 @@ export interface Composition {
   /** Local SVG poster placeholder in /public/img. */
   poster: string;
   featured?: boolean;
+  /** Optional destination when the card is clicked. Falls back to a live
+   *  YouTube search for the title when not set. */
+  link?: string;
 }
 
 export type ConcertStatus = 'Upcoming' | 'Completed';

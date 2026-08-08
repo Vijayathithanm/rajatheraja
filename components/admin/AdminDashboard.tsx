@@ -96,6 +96,7 @@ const configs: (CollectionConfig & { icon: string })[] = [
         options: ['Movies', 'Albums', 'Background Score', 'Devotional', 'Independent Music'],
       },
       { name: 'poster', label: 'Poster path' },
+      { name: 'link', label: 'Link (leave blank for YouTube search)' },
     ],
   },
   {
